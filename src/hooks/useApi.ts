@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: process.env.REACT_APP_API
+    //baseURL: process.env.REACT_APP_API
 });
 
 export const useApi = () => ({
-    validateToken: async (token: string) => {
-        const response = await api.post('/validate', {
-            token
+    validateToken: async (apiKey: string) => {
+        const response = await api.post('https://api.logis.com.co/v1/configuracion_pos?selectAll', {
+            apiKey
         })
         return response.data
         // return {

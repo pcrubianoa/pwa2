@@ -1,16 +1,20 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../provider/authProvider";
 import { useApi } from "../hooks/useApi";
-import React from "react";
+import React, { useState } from "react";
 
 const Login = () => {
   const { setToken } = useAuth();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
   const api = useApi();
 
-  const handleLogin = () => {
-    const signin = async (email: string, password: string, application:string) => {
-      const data = await api.signin(email, password, application);
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const signin = async (username: string, password: string, application:string) => {
+      const data = await api.signin(username, password, application);
       if (data.success === true) {
           //setUser(data.user.usuario);
           //setToken(data.apiKey);
@@ -18,32 +22,49 @@ const Login = () => {
           navigate("/", { replace: true });
           //return true;
       }
+      setError('Usuario o contraseña incorrectos');
       return false;
   }
 
-  //signin("vendedor.dev", "123123", "bares");
+  signin(username, password, "bares");
 
   };
 
-  setTimeout(() => {
-    handleLogin();
-  }, 3 * 1000);
+  // setTimeout(() => {
+  //   handleLogin();
+  // }, 3 * 1000);
 
-  return <><div className="login-wrapper d-flex align-items-center justify-content-center text-center">
+  return <>
+  <div className="login-wrapper d-flex align-items-center justify-content-center text-center">
   <div className="background-shape"></div>
   <div className="container">
     <div className="row justify-content-center">
       <div className="col-10 col-lg-8"><img className="big-logo" src="img/core-img/logo-white.png" alt=""></img>
         <div className="register-form mt-5">
-          <form action="home.html" method="">
-            <div className="form-group text-start mb-4"><span>Username</span>
+          <form onSubmit={handleLogin}>
+            <div className="form-group text-start mb-4"><span>Usuario</span>
               <label htmlFor="username"><i className="ti ti-user"></i></label>
-              <input className="form-control" id="username" type="text" placeholder="info@example.com"></input>
+              <input
+                className="form-control"
+                id="username"
+                type="text"
+                placeholder="usuario.negocio"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}>
+                </input>
             </div>
-            <div className="form-group text-start mb-4"><span>Password</span>
+            <div className="form-group text-start mb-4"><span>Cosntraseña</span>
               <label htmlFor="password"><i className="ti ti-key"></i></label>
-              <input className="form-control" id="password" type="password" placeholder="Password"></input>
+              <input
+                className="form-control"
+                id="password"
+                type="password"
+                placeholder="constraseña"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                ></input>
             </div>
+            {error && <div style={{ color: 'red', marginBottom: '10px' }}>{error}</div>}
             <button className="btn btn-warning btn-lg w-100" type="submit">Log In</button>
           </form>
         </div>
@@ -54,7 +75,8 @@ const Login = () => {
       </div>
     </div>
   </div>
-</div></>;
+</div>
+</>;
 };
 
 export default Login;

@@ -77,36 +77,6 @@ const Home = () => {
         </div>
       </div>
       <div className="hero-wrapper">
-        <div className="container">
-          <div className="pt-3">
-            <div className="hero-slides owl-carousel">
-              <div className="single-hero-slide" style={{ backgroundImage:`url(${'img/bg-img/1.jpg'})`}}>
-                <div className="slide-content h-100 d-flex align-items-center">
-                  <div className="slide-text">
-                    <h4 className="text-white mb-0" data-animation="fadeInUp" data-delay="100ms" data-duration="1000ms">Amazon Echo</h4>
-                    <p className="text-white" data-animation="fadeInUp" data-delay="400ms" data-duration="1000ms">3rd Generation, Charcoal</p><a className="btn btn-primary" href="home.html#" data-animation="fadeInUp" data-delay="800ms" data-duration="1000ms">Buy Now</a>
-                  </div>
-                </div>
-              </div>
-              <div className="single-hero-slide" style={{ backgroundImage:`url(${'img/bg-img/1.jpg'})`}}>
-                <div className="slide-content h-100 d-flex align-items-center">
-                  <div className="slide-text">
-                    <h4 className="text-white mb-0" data-animation="fadeInUp" data-delay="100ms" data-duration="1000ms">Light Candle</h4>
-                    <p className="text-white" data-animation="fadeInUp" data-delay="400ms" data-duration="1000ms">Now only $22</p><a className="btn btn-primary" href="home.html#" data-animation="fadeInUp" data-delay="500ms" data-duration="1000ms">Buy Now</a>
-                  </div>
-                </div>
-              </div>
-              <div className="single-hero-slide" style={{ backgroundImage:`url(${'img/bg-img/1.jpg'})`}}>
-                <div className="slide-content h-100 d-flex align-items-center">
-                  <div className="slide-text">
-                    <h4 className="text-white mb-0" data-animation="fadeInUp" data-delay="100ms" data-duration="1000ms">Fancy Chair</h4>
-                    <p className="text-white" data-animation="fadeInUp" data-delay="400ms" data-duration="1000ms">3 years warranty</p><a className="btn btn-primary" href="home.html#" data-animation="fadeInUp" data-delay="800ms" data-duration="1000ms">Buy Now</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
       <div className="product-catagories-wrapper py-3">
         <div className="container">

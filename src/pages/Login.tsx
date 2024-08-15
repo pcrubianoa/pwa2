@@ -65,7 +65,7 @@ const Login = () => {
                 ></input>
             </div>
             {error && <div style={{ color: 'red', marginBottom: '10px' }}>{error}</div>}
-            <button className="btn btn-warning btn-lg w-100" type="submit">Log In</button>
+            <button className="btn btn-warning btn-lg w-100" type="submit">Ingresar</button>
           </form>
         </div>
         <div className="login-meta-data"><a className="forgot-password d-block mt-3 mb-1" href="forget-password.html">Forgot Password?</a>

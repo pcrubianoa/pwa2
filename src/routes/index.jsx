@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { useAuth } from "../provider/authProvider";
 import { ProtectedRoute } from "./ProtectedRoute";
 import Login from "../pages/Login";
+import Home from "../pages/Home";
 import Logout from "../pages/Logout";
 
 const Routes = () => {
@@ -27,7 +28,7 @@ const Routes = () => {
       children: [
         {
           path: "",
-          element: <div>User Home Page</div>,
+          element: <Home/>,
         },
         {
           path: "/profile",

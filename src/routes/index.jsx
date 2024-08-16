@@ -3,6 +3,7 @@ import { useAuth } from "../provider/authProvider";
 import { ProtectedRoute } from "./ProtectedRoute";
 import Login from "../pages/Login";
 import Home from "../pages/Home";
+import Sincronizacion from "../pages/Sincronizacion";
 import Logout from "../pages/Logout";
 
 const Routes = () => {
@@ -31,8 +32,8 @@ const Routes = () => {
           element: <Home/>,
         },
         {
-          path: "/profile",
-          element: <div>User Profile</div>,
+          path: "/sincronizacion",
+          element: <Sincronizacion/>,
         },
         {
           path: "/logout",

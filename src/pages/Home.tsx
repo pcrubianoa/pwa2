@@ -17,7 +17,7 @@ const Home = () => {
         </div>
       </div>
     </div>
-    <div className="offcanvas offcanvas-start suha-offcanvas-wrap" tabindex="-1" id="suhaOffcanvas" aria-labelledby="suhaOffcanvasLabel">
+    <div className="offcanvas offcanvas-start suha-offcanvas-wrap" id="suhaOffcanvas" aria-labelledby="suhaOffcanvasLabel">
       <button className="btn-close btn-close-white" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       <div className="offcanvas-body">
         <div className="sidenav-profile">
@@ -60,8 +60,8 @@ const Home = () => {
                     <a className="product-thumbnail d-block" href="single-product.html"><img src="img/product/14.png" alt=""></img></a>
                   </div>
                   <div className="product-description">
-                    <a className="product-title d-block" href="single-product.html">Blue Skateboard</a>
-                    <p className="sale-price">$39<span>$89</span></p>
+                    <a className="product-title d-block" href="single-product.html">Mesa 1</a>
+                    <p className="sale-price">$10.000</p>
                   </div>
                 </div>
               </div>

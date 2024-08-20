@@ -2,38 +2,58 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { useAuth } from "../provider/authProvider";
 import { ProtectedRoute } from "./ProtectedRoute";
 import Login from "../pages/Login";
-import Home from "../pages/Home";
+import Mesas from "../pages/Mesas";
 import Sincronizacion from "../pages/Sincronizacion";
+import Productos from "../pages/Productos";
+import Perfil from "../pages/Perfil";
+import Terminos from "../pages/Terminos";
+import Configuracion from "../pages/Configuracion";
 import Logout from "../pages/Logout";
 
 const Routes = () => {
   const { token } = useAuth();
 
-  // Define public routes accessible to all users
+  // Rutas publicas
   const routesForPublic = [
     {
-      path: "/service",
+      path: "/servicios",
       element: <div>Service Page</div>,
     },
     {
-      path: "/about-us",
+      path: "/nosotros",
       element: <div>About Us</div>,
     },
   ];
 
-  // Define routes accessible only to authenticated users
+  // Rutas solo para usuarios autenticados
   const routesForAuthenticatedOnly = [
     {
       path: "/",
       element: <ProtectedRoute />, // Wrap the component in ProtectedRoute
       children: [
         {
-          path: "",
-          element: <Home/>,
+          path: "mesas",
+          element: <Mesas/>,
         },
         {
           path: "/sincronizacion",
           element: <Sincronizacion/>,
+        },
+        {
+          path: "/productos",
+          element: <Productos/>,
+        },
+        {
+          path: "/terminos",
+          element: <Terminos/>,
+        },
+        {
+          path: "/perfil",
+          element: <Perfil/>,
+        },
+        {
+          path: "/configuracion",
+          element: <Configuracion/>,
         },
         {
           path: "/logout",
@@ -43,7 +63,7 @@ const Routes = () => {
     },
   ];
 
-  // Define routes accessible only to non-authenticated users
+  // Rutas para usuarios pero no autenticados
   const routesForNotAuthenticatedOnly = [
     {
       path: "/",

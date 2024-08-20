@@ -19,7 +19,7 @@ const Login = () => {
           //setUser(data.user.usuario);
           //setToken(data.apiKey);
           setToken("this is a test token");
-          navigate("/", { replace: true });
+          navigate("/mesas", { replace: true });
           //return true;
       }
       setError('Usuario o contraseña incorrectos');

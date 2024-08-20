@@ -29,52 +29,64 @@ const Sincronizacion = () => {
     </div>
     <div className="my-order-wrapper" style={{backgroundImage: 'url(../../suha-3.2.0/img/bg-img/21.jpg)'}}>
       <div className="container">
-        <div className="card">
+      <div className="discount-coupon-card p-4 p-lg-5 dir-rtl">
+          <div className="d-flex align-items-center">
+            <div className="discountIcon"><img className="w-100" src="../suha-3-2-0/img/core-img/discount.png" alt=""></img></div>
+            <div className="text-content">
+              <h5 className="text-white mb-2">Aviso importante!</h5>
+              <p className="text-white mb-0">Esta operación puede borrar datos no enviados. Envíe o regístre una copia de seguridad antes de realizar este proceso.</p>
+            </div>
+          </div>
+        </div>
+        <div className="card mt-3">
           <div className="card-body p-4">
             <div className="single-order-status active">
               <div className="order-icon"><i className="ti ti-basket"></i></div>
               <div className="order-text">
-                <h6>Order placed</h6><span>2 Feb 2024 - 12:38 PM</span>
+                <h6>Familias</h6><span>2 Feb 2024 - 12:38 PM</span>
               </div>
               <div className="order-status"><i className="ti ti-circle-check"></i></div>
             </div>
             <div className="single-order-status active">
               <div className="order-icon"><i className="ti ti-box"></i></div>
               <div className="order-text">
-                <h6>Product packaging</h6><span>3 Feb 2024</span>
+                <h6>Categorias</h6><span>3 Feb 2024</span>
               </div>
               <div className="order-status"><i className="ti ti-circle-check"></i></div>
             </div>
             <div className="single-order-status active">
               <div className="order-icon"><i className="ti ti-trolley"></i></div>
               <div className="order-text">
-                <h6>Ready for shipment</h6><span>3 Feb 2024</span>
+                <h6>Mesas</h6><span>3 Feb 2024</span>
               </div>
               <div className="order-status"><i className="ti ti-circle-check"></i></div>
             </div>
             <div className="single-order-status">
               <div className="order-icon"><i className="ti ti-truck-delivery"></i></div>
               <div className="order-text">
-                <h6>On the way</h6><span>Estimate: 4 Feb 2024</span>
+                <h6>Productos</h6><span>Estimate: 4 Feb 2024</span>
               </div>
               <div className="order-status"><i className="ti ti-circle-check"></i></div>
             </div>
             <div className="single-order-status">
               <div className="order-icon"><i className="ti ti-building-store"></i></div>
               <div className="order-text">
-                <h6>Dropped in the delivery station</h6><span>Estimate: 6 Feb 2024</span>
-              </div>
-              <div className="order-status"><i className="ti ti-circle-check"></i></div>
-            </div>
-            <div className="single-order-status">
-              <div className="order-icon"><i className="ti ti-heart-check"></i></div>
-              <div className="order-text">
-                <h6>Delivered</h6><span>Estimate: 7 Feb 2024</span>
+                <h6>Configuración</h6><span>Estimate: 6 Feb 2024</span>
               </div>
               <div className="order-status"><i className="ti ti-circle-check"></i></div>
             </div>
           </div>
         </div>
+        <div className="card coupon-card mb-3 mt-3">
+            <div className="card-body">
+              <div className="apply-coupon">
+                <h6 className="mb-0 text-center">Almacenamiento disponible en tu dispositivo</h6>
+                <div className="coupon-form">
+
+                </div>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
     <div className="internet-connection-status" id="internetStatus"></div>

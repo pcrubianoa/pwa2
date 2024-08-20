@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../provider/authProvider";
 import { useApi } from "../hooks/useApi";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { db } from "../db/db";
 
 const Login = () => {
   const { setToken } = useAuth();
@@ -10,6 +11,22 @@ const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const api = useApi();
+
+  useEffect(() => {
+
+    const offcanvasElement = document.querySelector('.offcanvas-backdrop');
+    if (offcanvasElement) {
+      offcanvasElement.classList.remove('show');
+      offcanvasElement.classList.add('hide');
+    }
+
+    const fetchTodos = async () => {
+        const allTodos = await db.productos.toArray();
+    };
+
+    fetchTodos();
+  }, []);
+
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -20,7 +37,6 @@ const Login = () => {
           //setToken(data.apiKey);
           setToken("this is a test token");
           navigate("/mesas", { replace: true });
-          //return true;
       }
       setError('Usuario o contraseña incorrectos');
       return false;
@@ -29,10 +45,6 @@ const Login = () => {
   signin(username, password, "bares");
 
   };
-
-  // setTimeout(() => {
-  //   handleLogin();
-  // }, 3 * 1000);
 
   return <>
   <div className="login-wrapper d-flex align-items-center justify-content-center text-center">

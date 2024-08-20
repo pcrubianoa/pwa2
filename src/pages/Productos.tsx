@@ -1,11 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../provider/authProvider";
 import { useApi } from "../hooks/useApi";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FooterNav from "../components/FooterNav";
 import SideNav from "../components/SideNav";
 
 const Productos = () => {
+
+  useEffect(() => {
+    $(document).ready(function () {
+      $(".owl-carousel").owlCarousel({
+        loop: true,
+        margin: 10,
+      });
+    });
+  }, []);
+
   return <>
     <div className="header-area" id="headerArea">
       <div className="container h-100 d-flex align-items-center justify-content-between rtl-flex-d-row-r">
@@ -28,40 +38,62 @@ const Productos = () => {
       </div>
     </div>
     <div className="page-content-wrapper">
-      <div className="featured-products-wrapper py-3">
-      <div className="container">
-        <p>Esta operación puede borrar datos no enviados. Envíe o regístre una copia de seguridad antes de realizar este proceso.</p>
-          <div className="alternative-search-options">
-            <div className="dropdown"><a className="btn btn-primary dropdown-toggle" id="altSearchOption" href="home.html#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i className="ti ti-adjustments-horizontal"></i></a>
-              <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="altSearchOption">
-                <li><a className="dropdown-item" href="home.html#"><i className="ti ti-microphone"> </i>General</a></li>
-                <li><a className="dropdown-item" href="home.html#"><i className="ti ti-layout-collage"> </i>Image</a></li>
-              </ul>
+    <div className="py-3">
+        <div className="container">
+          <div className="row g-1 align-items-center rtl-flex-d-row-r">
+            <div className="col-8">
+              <div className="product-catagories owl-carousel catagory-slides">
+                <a className="shadow-sm" href="shop-list.html#"><img src="../suha-3.2.0/img/product/9.png" alt=""></img>Shoes</a>
+                <a className="shadow-sm" href="shop-list.html#"><img src="../suha-3.2.0/img/product/4.png" alt=""></img>Dress</a>
+                <a className="shadow-sm" href="shop-list.html#"><img src="../suha-3.2.0/img/product/9.png" alt=""></img>Shoes</a>
+                <a className="shadow-sm" href="shop-list.html#"><img src="../suha-3.2.0/img/product/4.png" alt=""></img>Dress</a>
+              </div>
+            </div>
+            <div className="col-4">
+              <div className="select-product-catagory">
+                <select className="right small border-0" id="selectProductCatagory" name="selectProductCatagory" aria-label="Default select example">
+                  <option selected>Short by</option>
+                  <option value="1">Newest</option>
+                  <option value="2">Popular</option>
+                  <option value="3">Ratings</option>
+                </select>
+              </div>
             </div>
           </div>
-        <div className="checkout-wrapper-area py-3">
-          <div className="choose-payment-method">
-            <div className="row g-2 justify-content-center rtl-flex-d-row-r">
-              <div className="col-6 col-md-5">
-                <div className="single-payment-method"><a className="credit-card active" href="checkout-credit-card.html"><i className="ti ti-list"></i>
-                    <h6>Familias</h6></a></div>
+          <div className="mb-3"></div>
+          <div className="row g-2">
+            <div className="col-12">
+              <div className="card horizontal-product-card">
+                <div className="d-flex align-items-center">
+                  <div className="product-thumbnail-side">
+                    <a className="product-thumbnail d-block" href="single-product.html"><img src="../suha-3.2.0/img/product/12.png" alt=""></img></a>
+                    <a className="wishlist-btn" href="shop-list.html#"><i className="ti ti-heart"></i></a>
+                  </div>
+                  <div className="product-description">
+                    <a className="product-title d-block" href="single-product.html">Beach Sunglasses</a>
+                    <p className="sale-price"><i className="ti ti-currency-dollar"></i>$24<span>$32</span></p>
+                    <div className="product-rating"><i className="ti ti-star-filled"></i>4.79 <span className="ms-1">(63 review)</span></div>
+                  </div>
+                </div>
               </div>
-              <div className="col-6 col-md-5">
-                <div className="single-payment-method"><a className="bank" href="checkout-bank.html"><i className="ti ti-category-2"></i>
-                    <h6>Categorias</h6></a></div>
-              </div>
-              <div className="col-6 col-md-5">
-                <div className="single-payment-method"><a className="paypal" href="checkout-paypal.html"><i className="ti ti-brand-airtable"></i>
-                    <h6>Mesas</h6></a></div>
-              </div>
-              <div className="col-6 col-md-5">
-                <div className="single-payment-method"><a className="cash" href="checkout-cash.html"><i className="ti ti-tags"></i>
-                    <h6>Productos</h6></a></div>
+            </div>
+            <div className="col-12">
+              <div className="card horizontal-product-card">
+                <div className="d-flex align-items-center">
+                  <div className="product-thumbnail-side">
+                    <a className="product-thumbnail d-block" href="single-product.html"><img src="../suha-3.2.0/img/product/12.png" alt=""></img></a>
+                    <a className="wishlist-btn" href="shop-list.html#"><i className="ti ti-heart"></i></a>
+                  </div>
+                  <div className="product-description">
+                    <a className="product-title d-block" href="single-product.html">Beach Sunglasses</a>
+                    <p className="sale-price"><i className="ti ti-currency-dollar"></i>$24<span>$32</span></p>
+                    <div className="product-rating"><i className="ti ti-star-filled"></i>4.79 <span className="ms-1">(63 review)</span></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
     <div className="internet-connection-status" id="internetStatus"></div>

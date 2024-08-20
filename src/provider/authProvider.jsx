@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { db } from "../db/db";
 
 const AuthContext = createContext();
 
@@ -12,6 +13,15 @@ const AuthProvider = ({ children }) => {
     setToken_(newToken);
   };
 
+  const deleteToken = () => {
+    setToken();
+    deleteDatabase();
+  };
+
+  const deleteDatabase = async () => {
+    await db.delete();
+};
+
   useEffect(() => {
     if (token) {
       axios.defaults.headers.common["Authorization"] = "Bearer " + token;
@@ -19,6 +29,7 @@ const AuthProvider = ({ children }) => {
     } else {
       delete axios.defaults.headers.common["Authorization"];
       localStorage.removeItem("token");
+      deleteDatabase();
     }
   }, [token]);
 
@@ -27,6 +38,7 @@ const AuthProvider = ({ children }) => {
     () => ({
       token,
       setToken,
+      deleteToken
     }),
     [token]
   );

@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, Link } from 'react-router-dom';
+import { useAuth } from "../provider/authProvider";
 
 const SideNav = () => {
+  const { deleteToken } = useAuth();
+
+  const handleLogout = () => {
+    deleteToken();
+};
+
   useEffect(() => {
     const offcanvasElement = document.querySelector('.offcanvas-backdrop');
     if (offcanvasElement) {
@@ -9,6 +16,7 @@ const SideNav = () => {
       offcanvasElement.classList.add('hide');
     }
   }, []);
+
   return <>
     <div className="offcanvas offcanvas-start suha-offcanvas-wrap" id="suhaOffcanvas" aria-labelledby="suhaOffcanvasLabel">
       <button className="btn-close btn-close-white" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -45,6 +53,11 @@ const SideNav = () => {
             <Link to="/terminos">
               <i className="ti ti-brand-airtable"></i> Terminos del servicio
             </Link>
+          </li>
+          <li>
+          <Link to="" onClick={handleLogout}>
+            <i className="ti ti-brand-airtable"></i> Cerrar sesión
+          </Link>
           </li>
         </ul>
       </div>

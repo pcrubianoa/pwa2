@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../provider/authProvider";
 import { useApi } from "../hooks/useApi";
 import React, { useState, useEffect } from "react";
-//import { db } from "../db/db";
+import { db } from "../db/db";
 
 const Login = () => {
   const { setToken } = useAuth();
@@ -11,37 +11,78 @@ const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const api = useApi();
+  const [configuracion, setConfiguracion] = useState(null);
 
   useEffect(() => {
-
     const offcanvasElement = document.querySelector('.offcanvas-backdrop');
     if (offcanvasElement) {
       offcanvasElement.classList.remove('show');
       offcanvasElement.classList.add('hide');
     }
 
-    const fetchTodos = async () => {
-      try {
-        //const productosGuardados = await db.productos.toArray();
 
-      } catch (error) {
-        console.error('Error al cargar productos:', error);
-      }
-    };
 
-    fetchTodos();
+    
   }, []);
 
+  const fetchConfiguracion = async () => {
+    try {
+      // Puedes ajustar la consulta según necesites
+      const configuracionData = await db.configuracion.toArray();
+      setConfiguracion(configuracionData);
+      console.log('configuracionData: ', configuracionData);
+    } catch (error) {
+      console.error('Error al obtener los datos de configuración:', error);
+    }
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
     const signin = async (username: string, password: string, application:string) => {
       const data = await api.signin(username, password, application);
       if (data.success === true) {
-          //setUser(data.user.usuario);
+          console.log('data: ', data);
+          db.open();
           setToken(data.apiKey);
-          //setToken("this is a test token");
-          navigate("/sincronizacion", { replace: true });
+          fetchConfiguracion();
+        //   if (configuracion.length != 0) {
+        //     db.configuracion.where("id")
+        //         .equals(1)
+        //         .modify({
+        //             apiKey: data.apiKey,
+        //             usuario: data.user.usuario,
+        //             empresa: data.empresa,
+        //             pw: txtPass.value,
+        //             id_usuario: data.user.id,
+        //             nombre: data.user.nombre,
+        //             id_almacen: data.config.id_almacen,
+        //             id_tercero: data.config.id_tercero,
+        //             establecimiento: data.config.establecimiento,
+        //             direccion: data.config.direccion,
+        //             telefono: data.config.telefono
+        //         });
+        // } else {
+        //     let item = {
+        //         id_usuario: data.user.id,
+        //         usuario: data.user.usuario,
+        //         empresa: data.empresa,
+        //         pw: txtPass.value,
+        //         nombre: data.user.nombre,
+        //         id_almacen: data.config.id_almacen,
+        //         id_tercero: data.config.id_tercero,
+        //         establecimiento: data.config.establecimiento,
+        //         direccion: data.config.direccion,
+        //         telefono: data.config.telefono,
+        //         consecutivo: 1,
+        //         doc_activo: 0,
+        //         apiKey: data.apiKey,
+        //         servidor_impresion: '',
+        //         created_at: new Date().toLocaleString("es-CO", { timeZone: "America/Bogota" })
+        //     }
+        //     db.configuracion.add(item);
+        // }
+
+        navigate("/sincronizacion", { replace: true });
       }
       setError('Usuario o contraseña incorrectos');
       return false;

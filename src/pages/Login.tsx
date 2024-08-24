@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../provider/authProvider";
 import { useApi } from "../hooks/useApi";
 import React, { useState, useEffect } from "react";
-import { db } from "../db/db";
+//import { db } from "../db/db";
 
 const Login = () => {
   const { setToken } = useAuth();
@@ -21,7 +21,12 @@ const Login = () => {
     }
 
     const fetchTodos = async () => {
-        //const allTodos = await db.productos.toArray();
+      try {
+        //const productosGuardados = await db.productos.toArray();
+
+      } catch (error) {
+        console.error('Error al cargar productos:', error);
+      }
     };
 
     fetchTodos();

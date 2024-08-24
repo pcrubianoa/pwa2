@@ -7,7 +7,7 @@ const SideNav = () => {
 
   const handleLogout = () => {
     deleteToken();
-};
+  };
 
   useEffect(() => {
     const offcanvasElement = document.querySelector('.offcanvas-backdrop');

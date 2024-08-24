@@ -20,9 +20,6 @@ const Login = () => {
       offcanvasElement.classList.add('hide');
     }
 
-
-
-    
   }, []);
 
   const fetchConfiguracion = async () => {
@@ -30,7 +27,7 @@ const Login = () => {
       // Puedes ajustar la consulta según necesites
       const configuracionData = await db.configuracion.toArray();
       setConfiguracion(configuracionData);
-      console.log('configuracionData: ', configuracionData);
+      return configuracionData;
     } catch (error) {
       console.error('Error al obtener los datos de configuración:', error);
     }
@@ -41,46 +38,46 @@ const Login = () => {
     const signin = async (username: string, password: string, application:string) => {
       const data = await api.signin(username, password, application);
       if (data.success === true) {
-          console.log('data: ', data);
           db.open();
           setToken(data.apiKey);
-          fetchConfiguracion();
-        //   if (configuracion.length != 0) {
-        //     db.configuracion.where("id")
-        //         .equals(1)
-        //         .modify({
-        //             apiKey: data.apiKey,
-        //             usuario: data.user.usuario,
-        //             empresa: data.empresa,
-        //             pw: txtPass.value,
-        //             id_usuario: data.user.id,
-        //             nombre: data.user.nombre,
-        //             id_almacen: data.config.id_almacen,
-        //             id_tercero: data.config.id_tercero,
-        //             establecimiento: data.config.establecimiento,
-        //             direccion: data.config.direccion,
-        //             telefono: data.config.telefono
-        //         });
-        // } else {
-        //     let item = {
-        //         id_usuario: data.user.id,
-        //         usuario: data.user.usuario,
-        //         empresa: data.empresa,
-        //         pw: txtPass.value,
-        //         nombre: data.user.nombre,
-        //         id_almacen: data.config.id_almacen,
-        //         id_tercero: data.config.id_tercero,
-        //         establecimiento: data.config.establecimiento,
-        //         direccion: data.config.direccion,
-        //         telefono: data.config.telefono,
-        //         consecutivo: 1,
-        //         doc_activo: 0,
-        //         apiKey: data.apiKey,
-        //         servidor_impresion: '',
-        //         created_at: new Date().toLocaleString("es-CO", { timeZone: "America/Bogota" })
-        //     }
-        //     db.configuracion.add(item);
-        // }
+          fetchConfiguracion().then(configuracion => {
+          if (configuracion.length != 0) {
+            db.configuracion.where("id")
+                .equals(1)
+                .modify({
+                    apiKey: data.apiKey,
+                    usuario: data.user.usuario,
+                    empresa: data.empresa,
+                    pw: password,
+                    id_usuario: data.user.id,
+                    nombre: data.user.nombre,
+                    id_almacen: data.config.id_almacen,
+                    id_tercero: data.config.id_tercero,
+                    establecimiento: data.config.establecimiento,
+                    direccion: data.config.direccion,
+                    telefono: data.config.telefono
+                });
+        } else {
+            let item = {
+                id_usuario: data.user.id,
+                usuario: data.user.usuario,
+                empresa: data.empresa,
+                pw: password,
+                nombre: data.user.nombre,
+                id_almacen: data.config.id_almacen,
+                id_tercero: data.config.id_tercero,
+                establecimiento: data.config.establecimiento,
+                direccion: data.config.direccion,
+                telefono: data.config.telefono,
+                consecutivo: 1,
+                doc_activo: 0,
+                apiKey: data.apiKey,
+                servidor_impresion: '',
+                created_at: new Date().toLocaleString("es-CO", { timeZone: "America/Bogota" })
+            }
+            db.configuracion.add(item);
+        }
+          });
 
         navigate("/sincronizacion", { replace: true });
       }

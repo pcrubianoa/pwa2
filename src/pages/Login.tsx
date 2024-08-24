@@ -21,7 +21,7 @@ const Login = () => {
     }
 
     const fetchTodos = async () => {
-        const allTodos = await db.productos.toArray();
+        //const allTodos = await db.productos.toArray();
     };
 
     fetchTodos();
@@ -34,9 +34,9 @@ const Login = () => {
       const data = await api.signin(username, password, application);
       if (data.success === true) {
           //setUser(data.user.usuario);
-          //setToken(data.apiKey);
-          setToken("this is a test token");
-          navigate("/mesas", { replace: true });
+          setToken(data.apiKey);
+          //setToken("this is a test token");
+          navigate("/sincronizacion", { replace: true });
       }
       setError('Usuario o contraseña incorrectos');
       return false;

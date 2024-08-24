@@ -31,7 +31,9 @@ const Sincronizacion = () => {
       <div className="container">
       <div className="discount-coupon-card p-4 p-lg-5 dir-rtl">
           <div className="d-flex align-items-center">
-            <div className="discountIcon"><img className="w-100" src="../suha-3-2-0/img/core-img/discount.png" alt=""></img></div>
+            <div className="discountIcon">
+              <img className="w-100" src="../../suha-3.2.0/img/core-img/alert.png" alt=""></img>
+            </div>
             <div className="text-content">
               <h5 className="text-white mb-2">Aviso importante!</h5>
               <p className="text-white mb-0">Esta operación puede borrar datos no enviados. Envíe o regístre una copia de seguridad antes de realizar este proceso.</p>
@@ -44,13 +46,6 @@ const Sincronizacion = () => {
               <div className="order-icon"><i className="ti ti-basket"></i></div>
               <div className="order-text">
                 <h6>Familias</h6><span>2 Feb 2024 - 12:38 PM</span>
-              </div>
-              <div className="order-status"><i className="ti ti-circle-check"></i></div>
-            </div>
-            <div className="single-order-status active">
-              <div className="order-icon"><i className="ti ti-box"></i></div>
-              <div className="order-text">
-                <h6>Categorias</h6><span>3 Feb 2024</span>
               </div>
               <div className="order-status"><i className="ti ti-circle-check"></i></div>
             </div>

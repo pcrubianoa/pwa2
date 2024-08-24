@@ -51,7 +51,7 @@ const Login = () => {
   <div className="background-shape"></div>
   <div className="container">
     <div className="row justify-content-center">
-      <div className="col-10 col-lg-8"><img className="big-logo" src="img/core-img/logo-white.png" alt=""></img>
+      <div className="col-10 col-lg-8"><img className="big-logo" src="https://logis.com.co/login/images/logo-text.png" width="60%" alt=""></img>
         <div className="register-form mt-5">
           <form onSubmit={handleLogin}>
             <div className="form-group text-start mb-4"><span>Usuario</span>
@@ -65,7 +65,7 @@ const Login = () => {
                 onChange={(e) => setUsername(e.target.value)}>
                 </input>
             </div>
-            <div className="form-group text-start mb-4"><span>Cosntraseña</span>
+            <div className="form-group text-start mb-4"><span>Contraseña</span>
               <label htmlFor="password"><i className="ti ti-key"></i></label>
               <input
                 className="form-control"
@@ -80,10 +80,9 @@ const Login = () => {
             <button className="btn btn-warning btn-lg w-100" type="submit">Ingresar</button>
           </form>
         </div>
-        <div className="login-meta-data"><a className="forgot-password d-block mt-3 mb-1" href="forget-password.html">Forgot Password?</a>
-          <p className="mb-0">Didn't have an account?<a className="mx-1" href="register.html">Register Now</a></p>
+        <div className="login-meta-data"><a className="forgot-password d-block mt-3 mb-1">Olvide la contraseña?</a>
+          <p className="mb-0">¿No tienes una cuenta?<a className="mx-1" href="register.html">Registrate ahora</a></p>
         </div>
-        <div className="view-as-guest mt-3"><a className="btn btn-primary btn-sm" href="home.html">View as guest<i className="ps-2 ti ti-arrow-right"></i></a></div>
       </div>
     </div>
   </div>

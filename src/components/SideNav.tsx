@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, Link } from 'react-router-dom';
 import { useAuth } from "../provider/authProvider";
+import { db } from "../db/db";
+import { crud } from "../db/crud";
 
 const SideNav = () => {
-  const { deleteToken } = useAuth();
+  const { deleteToken } = useAuth()
+  const [configuracion, setConfiguracion] = useState([]);;
 
   const handleLogout = () => {
     deleteToken();
@@ -15,6 +18,15 @@ const SideNav = () => {
       offcanvasElement.classList.remove('show');
       offcanvasElement.classList.add('hide');
     }
+
+    const fetchConfiguracion = async () => {
+      const allConfiguracion = await crud.getAll('configuracion');
+      setConfiguracion(allConfiguracion);
+    };
+
+    fetchConfiguracion().then(() => {
+      //console.log('configuracion: ', configuracion);
+    });
   }, []);
 
   return <>
@@ -24,7 +36,7 @@ const SideNav = () => {
         <div className="sidenav-profile">
           <div className="user-profile"><img src="../../suha-3.2.0/img/bg-img/9.jpg" alt=""></img></div>
           <div className="user-info">
-            <h5 className="user-name mb-1 text-white">Tercero Axiliar</h5>
+            <h5 className="user-name mb-1 text-white">{configuracion.length > 0 ? configuracion[0].nombre : 'Cargando configuración...'}</h5>
             <p className="available-balance text-white">EL AGRADO<span className="counter"></span></p>
           </div>
         </div>

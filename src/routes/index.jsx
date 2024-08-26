@@ -3,6 +3,7 @@ import { useAuth } from "../provider/authProvider";
 import { ProtectedRoute } from "./ProtectedRoute";
 import Login from "../pages/Login";
 import Mesas from "../pages/Mesas";
+import MesaDetalle from "../pages/MesaDetalle";
 import Sincronizacion from "../pages/Sincronizacion";
 import Productos from "../pages/Productos";
 import Perfil from "../pages/Perfil";
@@ -34,6 +35,10 @@ const Routes = () => {
         {
           path: "mesas",
           element: <Mesas/>,
+        },
+        {
+          path: "/mesa/:id",
+          element: <MesaDetalle/>,
         },
         {
           path: "/sincronizacion",

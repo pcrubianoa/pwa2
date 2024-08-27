@@ -63,6 +63,7 @@ const ListaProducto = () => {
                   key={familia.id}
                   nombre={familia.nombre}
                   onClick={() => handleFamiliaClick(familia)}
+                  isSelected={familiaSeleccionada && familiaSeleccionada.id === familia.id}
                 />
               ))}
             </div>

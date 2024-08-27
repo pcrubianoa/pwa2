@@ -41,7 +41,7 @@ function MesaDetalle() {
           <div className="section-heading d-flex align-items-center justify-content-between dir-rtl">
           {mesa ? (
         <div>
-          <p>Total: {mesa.total}</p>
+          <p>Total: $ {new Intl.NumberFormat("COP").format(mesa.total)}</p>
         </div>
         ) : (
           <p>Cargando...</p>

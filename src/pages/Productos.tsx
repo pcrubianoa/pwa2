@@ -8,12 +8,7 @@ import SideNav from "../components/SideNav";
 const Productos = () => {
 
   useEffect(() => {
-    $(document).ready(function () {
-      $(".owl-carousel").owlCarousel({
-        loop: true,
-        margin: 10,
-      });
-    });
+
   }, []);
 
   return <>
@@ -29,30 +24,17 @@ const Productos = () => {
       </div>
     </div>
     <SideNav/>
-    <div className="toast pwa-install-alert shadow bg-white" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000" data-bs-autohide="true">
-      <div className="toast-body">
-        <div className="content d-flex align-items-center mb-2"><img src="img/icons/icon-72x72.png" alt=""></img>
-          <h6 className="mb-0">Add to Home Screen</h6>
-          <button className="btn-close ms-auto" type="button" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div><span className="mb-0 d-block">Click the<strong className="mx-1">Add to Home Screen</strong>button &amp; enjoy it like a regular app.</span>
-      </div>
-    </div>
     <div className="page-content-wrapper">
     <div className="py-3">
         <div className="container">
           <div className="row g-1 align-items-center rtl-flex-d-row-r">
             <div className="col-8">
-              <div className="product-catagories owl-carousel catagory-slides">
-                <a className="shadow-sm" href="shop-list.html#"><img src="../suha-3.2.0/img/product/9.png" alt=""></img>Shoes</a>
-                <a className="shadow-sm" href="shop-list.html#"><img src="../suha-3.2.0/img/product/4.png" alt=""></img>Dress</a>
-                <a className="shadow-sm" href="shop-list.html#"><img src="../suha-3.2.0/img/product/9.png" alt=""></img>Shoes</a>
-                <a className="shadow-sm" href="shop-list.html#"><img src="../suha-3.2.0/img/product/4.png" alt=""></img>Dress</a>
-              </div>
+
             </div>
             <div className="col-4">
               <div className="select-product-catagory">
                 <select className="right small border-0" id="selectProductCatagory" name="selectProductCatagory" aria-label="Default select example">
-                  <option selected>Short by</option>
+                  <option defaultValue>Short by</option>
                   <option value="1">Newest</option>
                   <option value="2">Popular</option>
                   <option value="3">Ratings</option>

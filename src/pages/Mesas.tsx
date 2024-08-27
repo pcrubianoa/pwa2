@@ -48,19 +48,11 @@ const Mesas = () => {
       </div>
     </div>
     <SideNav/>
-    <div className="toast pwa-install-alert shadow bg-white" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000" data-bs-autohide="true">
-      <div className="toast-body">
-        <div className="content d-flex align-items-center mb-2"><img src="../../suha-3.2.0/img/icons/icon-72x72.png" alt=""></img>
-          <h6 className="mb-0">Add to Home Screen</h6>
-          <button className="btn-close ms-auto" type="button" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div><span className="mb-0 d-block">Click the<strong className="mx-1">Add to Home Screen</strong>button &amp; enjoy it like a regular app.</span>
-      </div>
-    </div>
     <div className="page-content-wrapper">
       <div className="featured-products-wrapper py-3">
         <div className="container">
           <div className="section-heading d-flex align-items-center justify-content-between dir-rtl">
-            <h6>Nombre del establecimiento</h6>
+            <h6>{configuracion.length > 0 ? configuracion[0].establecimiento : 'Cargando configuración...'}</h6>
           </div>
           <div className="row g-2">
 

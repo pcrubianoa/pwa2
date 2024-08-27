@@ -11,6 +11,7 @@ import { db } from "../db/db";
 import { crud } from "../db/crud";
 
 const Sincronizacion = () => {
+
   const [configuracion, setConfiguracion] = useState([]);
   const [sincronizacion, setSincronizacion] = useState([]);
   
@@ -22,21 +23,14 @@ const Sincronizacion = () => {
   const [isActiveFooterNav, setIsActiveFooterNav] = useState(false);
   
   const api = useApi();
-  
+
   useEffect(() => {
-    db.open();
+    //db.open();
 
     const fetchSincronizacion = async () => {
       const allSincronizacion = await crud.getAll('sincronizacion');
       return allSincronizacion;
     };
-
-    const getConfiguracion = async () => {
-      const allConfiguracion = await crud.getAll('configuracion');
-      setConfiguracion(allConfiguracion);
-    };
-
-    getConfiguracion();
 
     fetchSincronizacion().then(data => {
       if(data.length == 4) {
@@ -82,73 +76,88 @@ const Sincronizacion = () => {
       }
     };
     clearAll();
-    const queryMesas = async (apiKey) => {
-      const res = await api.queryMesas({
-        'apiKey': apiKey,
-      });
-      crud.bulkAdd('documentos', res.data);
-      await addSincronizacion({
-        tabla: 'Mesas',
-        no_registros: res.no_regs,
-        created_at: new Date().toLocaleString("es-CO", { timeZone: "America/Bogota" })
-      });
-      setIsActiveMesas(true);
+
+    const getConfiguracion = async () => {
+      const allConfiguracion = await crud.getAll('configuracion');
+      setConfiguracion(allConfiguracion);
+      return allConfiguracion;
     };
-  
-    const queryFamilias = async (apiKey) => {
-      const res = await api.queryFamilias({
-        'apiKey': apiKey,
-        'where': 'ver:1'
-      });
-      crud.bulkAdd('familias', res.data);
-      await addSincronizacion({
-        tabla: 'Familias',
-        no_registros: res.no_regs,
-        created_at: new Date().toLocaleString("es-CO", { timeZone: "America/Bogota" })
-      });
-      setIsActiveFamilias(true);
-    };
-  
-    const queryCategorias = async (apiKey) => {
-      const res = await api.queryCategorias({
-        'apiKey': apiKey,
-      });
-      crud.bulkAdd('categorias', res.data);
-      await addSincronizacion({
-        tabla: 'Categorias',
-        no_registros: res.no_regs,
-        created_at: new Date().toLocaleString("es-CO", { timeZone: "America/Bogota" })
-      });
-      setIsActiveCategorias(true);
-    };
-  
-    const queryProductos = async (apiKey) => {
-      const res = await api.queryProductos({
-        'apiKey': apiKey,
-        'fields': 'precio_venta, familia, marca, imagen, categoria, actual',
-        'filters': 'estado:1',
-        'group': 'id',
-        'options': (configuracion[0].inventario == 1) ? 'inventario' : ''
-      });
-      crud.bulkAdd('productos', res.data);
-      await addSincronizacion({
-        tabla: 'Productos',
-        no_registros: res.no_regs,
-        created_at: new Date().toLocaleString("es-CO", { timeZone: "America/Bogota" })
-      });
-      setIsActiveProductos(true);
-    };
-  
-    console.log('configuracion: ', configuracion);
-    const apiKey = configuracion[0].apiKey;
-    await Promise.all([
-      queryMesas(apiKey),
-      queryFamilias(apiKey),
-      queryCategorias(apiKey),
-      queryProductos(apiKey)
-    ]);
-  
-    ejecutarFuncionFinal();
+
+    getConfiguracion().then(configuracion => {
+      const queryMesas = async (apiKey) => {
+        const res = await api.queryMesas({
+          'apiKey': apiKey,
+        });
+        crud.bulkAdd('documentos', res.data);
+        await addSincronizacion({
+          tabla: 'Mesas',
+          no_registros: res.no_regs,
+          created_at: new Date().toLocaleString("es-CO", { timeZone: "America/Bogota" })
+        });
+        setIsActiveMesas(true);
+      };
+    
+      const queryFamilias = async (apiKey) => {
+        const res = await api.queryFamilias({
+          'apiKey': apiKey,
+          'where': 'ver:1'
+        });
+        crud.bulkAdd('familias', res.data);
+        await addSincronizacion({
+          tabla: 'Familias',
+          no_registros: res.no_regs,
+          created_at: new Date().toLocaleString("es-CO", { timeZone: "America/Bogota" })
+        });
+        setIsActiveFamilias(true);
+      };
+    
+      const queryCategorias = async (apiKey) => {
+        const res = await api.queryCategorias({
+          'apiKey': apiKey,
+        });
+        crud.bulkAdd('categorias', res.data);
+        await addSincronizacion({
+          tabla: 'Categorias',
+          no_registros: res.no_regs,
+          created_at: new Date().toLocaleString("es-CO", { timeZone: "America/Bogota" })
+        });
+        setIsActiveCategorias(true);
+      };
+    
+      const queryProductos = async (apiKey) => {
+        const res = await api.queryProductos({
+          'apiKey': apiKey,
+          'fields': 'precio_venta, familia, marca, imagen, categoria, actual',
+          'filters': 'estado:1',
+          'group': 'id',
+          'options': (configuracion[0].inventario == 1) ? 'inventario' : ''
+        });
+        crud.bulkAdd('productos', res.data);
+        await addSincronizacion({
+          tabla: 'Productos',
+          no_registros: res.no_regs,
+          created_at: new Date().toLocaleString("es-CO", { timeZone: "America/Bogota" })
+        });
+        setIsActiveProductos(true);
+      };
+    
+      console.log('configuracion: ', configuracion);
+      const apiKey = configuracion[0].apiKey;
+      
+      const runAllQueries = async () => {
+        await Promise.all([
+          queryMesas(apiKey),
+          queryFamilias(apiKey),
+          queryCategorias(apiKey),
+          queryProductos(apiKey)
+        ]);
+      }
+
+      runAllQueries();
+
+    
+      ejecutarFuncionFinal();
+    });
 
   };
   

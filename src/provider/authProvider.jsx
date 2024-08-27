@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const deleteDatabase = async () => {
-    db.close();
+    //db.close();
     await db.delete();
 };
 

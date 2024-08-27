@@ -7,7 +7,9 @@ const ListaProducto = () => {
   const [familias, setFamilias] = useState(null);
   const [productos, setProductos] = useState(null);
   const [productosFiltrados, setProductosFiltrados] = useState([]);
+  const [documentosDetalle, setDocumentosDetalle] = useState([]);
   const [familiaSeleccionada, setFamiliaSeleccionada] = useState(null);
+  const [productoSeleccionada, setProductoSeleccionada] = useState(null);
 
   useEffect(() => {
     const getFamilias = async () => {
@@ -42,8 +44,21 @@ const ListaProducto = () => {
   }, [familiaSeleccionada, productos]);
 
   const handleFamiliaClick = (familia) => {
-    console.log('familia: ', familia);
     setFamiliaSeleccionada(familia);
+  };
+
+  const addPedidoDetalle = async (data) => {
+    await crud.add('documentos_detalle', data);
+  };
+
+  const handleProductoClick = (producto) => {
+    console.log('producto: ', producto);
+    const pedido = {
+      id_mesa: 2,
+      nombre: producto.nombre
+    }
+    addPedidoDetalle(pedido);
+    setProductoSeleccionada(producto);
   };
 
   return (
@@ -78,6 +93,7 @@ const ListaProducto = () => {
                 <Producto
                   key={producto.id}
                   nombre={producto.nombre}
+                  onClick={() => handleProductoClick(producto)}
                   precio_venta={producto.precio_venta}
                 />
               ))

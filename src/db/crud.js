@@ -9,7 +9,17 @@ export const crud = {
       console.error(`Error al leer los registros de la tabla ${tableName}:`, error);
     }
   },
-
+  getAllByField: async (tableName, field, value) => {
+    try {
+      if (field && value !== undefined) {
+        return await db[tableName].where(field).equals(value).toArray();
+      } else {
+        return await db[tableName].toArray();
+      }
+    } catch (error) {
+      console.error(`Error al leer los registros de la tabla ${tableName}:`, error);
+    }
+  },
   getById: async (tableName, id) => {
     try {
       return await db[tableName].get(id);

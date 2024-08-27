@@ -33,7 +33,7 @@ const Routes = () => {
       element: <ProtectedRoute />, // Wrap the component in ProtectedRoute
       children: [
         {
-          path: "mesas",
+          path: "/mesas",
           element: <Mesas/>,
         },
         {
@@ -72,7 +72,7 @@ const Routes = () => {
   const routesForNotAuthenticatedOnly = [
     {
       path: "/",
-      element: <div>Home Page</div>,
+      element: <Login/>,
     },
     {
       path: "/login",

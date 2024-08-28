@@ -12,7 +12,7 @@ export const crud = {
   getAllByField: async (tableName, field, value) => {
     try {
       if (field && value !== undefined) {
-        return await db[tableName].where(field).equals(value).toArray();
+        return await db[tableName].where(field).equals(parseInt(value)).toArray();
       } else {
         return await db[tableName].toArray();
       }

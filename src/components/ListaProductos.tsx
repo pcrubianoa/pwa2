@@ -54,15 +54,16 @@ const ListaProducto = () => {
   const handleProductoClick = (producto) => {
     console.log('producto: ', producto);
     const pedido = {
-      id_mesa: 2,
-      nombre: producto.nombre
+      id_mesa: 4,
+      nombre: producto.nombre,
+      precio_venta: producto.precio_venta
     }
     addPedidoDetalle(pedido);
     setProductoSeleccionada(producto);
   };
 
   return (
-    <div className="section fixed-footer height-footer-up pr-0" style={{ height: '40vh', display: 'block', boxShadow: '0px -5px 20px rgba(50, 50, 50, 0.3)', background: '#e9e9e9', position: 'fixed', bottom: 0, width: '100%' }}>
+    <div className="section fixed-footer height-footer-up pr-0" style={{ height: '40vh', display: 'block', boxShadow: '0px -5px 20px rgba(50, 50, 50, 0.3)', background: '#e9e9e9', position: 'fixed', bottom: 0, width: '100%', zIndex: '999' }}>
       <div className="row justify-content-between py-2 px-2 font-weight-bold">
         <h6 className="mb-0">LISTA DE PRODUCTOS - MENÚ</h6>
         <div id="action-button" className="action-button toggle-searchbox">

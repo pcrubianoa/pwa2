@@ -12,23 +12,26 @@ function MesaDetalle() {
   const [pedido, setPedido] = useState([]);
 
   useEffect(() => {
+
     const getMesa = async (id) => {
       const mesa = await crud.getById('documentos', id);
       return mesa;
     };
 
     getMesa(id).then((mesa) => {
+      console.log('mesa: ', mesa);
       setMesa(mesa);
     });
 
-    const getDetalles = async () => {
+    const getDetalles = async (id) => {
+      console.log("getDetalles->id", id);
       const detalles = await crud.getAllByField('documentos_detalle', 'id_mesa', id);
       return detalles;
     };
 
-    getDetalles().then((detalle) => {
-      console.log('detalle: ', detalle);
-      setPedido(detalle);
+    getDetalles(id).then((detalles) => {
+      console.log('detalle: --->', detalles);
+      setPedido(detalles);
     });
   }, [id]);
 
@@ -60,19 +63,33 @@ function MesaDetalle() {
             <p>Cargando...</p>
           )
           }
-          {
-            pedido.length > 0 ? (
-              pedido.map(detalle => (
-                <Detalle
-                  key={detalle.id}
-                  nombre={detalle.nombre}
-                />
-              ))
-            ) : (
-              <p>Agrega productos a la mesa.</p>
-            )
-          }
           </div>
+
+          <div className="cart-wrapper-area py-3">
+          <div className="cart-table card mb-3">
+            <div className="table-responsive card-body">
+              <table className="table mb-0">
+                <tbody>
+                {
+                pedido.length > 0 ? (
+                  pedido.map(detalle => (
+                    <Detalle
+                      key={detalle.id}
+                      nombre={detalle.nombre}
+                      precio_venta={detalle.precio_venta}
+                    />
+                  ))
+                ) : (
+                  <tr>Agrega productos a la mesa.</tr>
+                )
+                }
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+
         </div>
       </div>
     </div>

@@ -122,11 +122,12 @@ const Login = () => {
                 ></input>
             </div>
             {error && <div style={{ color: 'red', marginBottom: '10px' }}>{error}</div>}
-            <button className="btn btn-warning btn-lg w-100" type="submit">Ingresar</button>
+            <button className="btn btn-primary btn-lg w-100" type="submit">Ingresar</button>
           </form>
         </div>
         <div className="login-meta-data"><a className="forgot-password d-block mt-3 mb-1">Olvide la contraseña?</a>
           <p className="mb-0">¿No tienes una cuenta?<a className="mx-1" href="register.html">Registrate ahora</a></p>
+          <small className="mb-0 text-primary mt-5">Logis ERP V2.0.0beta</small>
         </div>
       </div>
     </div>

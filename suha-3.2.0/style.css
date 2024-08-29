@@ -1366,9 +1366,7 @@ textarea:invalid {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background: #625AFA;
-  background: -webkit-gradient(linear, right top, left top, from(#625AFA), to(#0d5cd1));
-  background: linear-gradient(to left, #625AFA, #0d5cd1);
+  background: white;
   z-index: 10;
   overflow-y: auto;
   padding-top: 2rem;
@@ -1392,7 +1390,7 @@ textarea:invalid {
   z-index: 1;
 }
 .register-form span {
-  color: #ffffff;
+  color: black;
   font-size: 0.875rem;
   display: block;
 }
@@ -1404,37 +1402,37 @@ textarea:invalid {
   left: 0;
   font-size: 1rem;
   margin-bottom: 0;
-  color: #ffffff;
+  color: black;
   top: 1.75rem;
 }
 .register-form .form-control {
   border-radius: 0;
   border: 0;
-  color: #ffffff;
+  color: black;
   font-size: 0.813rem;
   background-color: transparent;
   height: 2.5rem;
   padding: 0.5rem 0.5rem 0.5rem 1.5rem;
-  border-bottom: 0.063rem solid rgba(255, 255, 255, 0.15);
+  border-bottom: 0.063rem solid rgba(131, 131, 131, 0.15);
 }
 .register-form .form-control::-webkit-input-placeholder {
-  color: #ffffff;
+  color: black;
   opacity: 0.5;
 }
 .register-form .form-control::-moz-placeholder {
-  color: #ffffff;
+  color: black;
   opacity: 0.5;
 }
 .register-form .form-control:-ms-input-placeholder {
-  color: #ffffff;
+  color: black;
   opacity: 0.5;
 }
 .register-form .form-control::-ms-input-placeholder {
-  color: #ffffff;
+  color: black;
   opacity: 0.5;
 }
 .register-form .form-control::placeholder {
-  color: #ffffff;
+  color: black;
   opacity: 0.5;
 }
 .register-form .progress {
@@ -1447,7 +1445,7 @@ textarea:invalid {
 .register-form .password-score {
   font-size: 0.75rem;
   font-weight: 500;
-  color: #ffffff;
+  color: black;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1458,14 +1456,14 @@ textarea:invalid {
 }
 .register-form .password-recommendation ul {
   padding-left: 0;
-  color: #ffffff;
+  color: black;
 }
 .register-form .password-recommendation ul li {
   font-size: 0.75rem;
 }
 .register-form #password-recommendation-heading {
   font-weight: 600;
-  color: #ffffff;
+  color: black;
   font-size: 1rem;
 }
 
@@ -1480,20 +1478,20 @@ textarea:invalid {
 }
 
 .login-meta-data a {
-  color: #ffffff;
+  color: black;
   font-size: 0.875rem;
 }
 .login-meta-data a:hover {
-  color: #ffaf00;
+  color: #1873e7;
 }
 .login-meta-data p {
-  color: rgba(255, 255, 255, 0.7);
+  color: black;
 }
 .login-meta-data p a {
-  color: #ffffff;
+  color: black;
 }
 .login-meta-data p a:hover {
-  color: #ffaf00;
+  color: #1873e7;
 }
 
 .go-back-btn {

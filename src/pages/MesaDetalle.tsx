@@ -80,7 +80,13 @@ function MesaDetalle() {
                     />
                   ))
                 ) : (
-                  <tr>Agrega productos a la mesa.</tr>
+                  <tr>
+                  <th scope="row"></th>
+                  <td></td>
+                  <td><a className="product-title" href="single-product.html">Agrega productos a la mesa.</a></td>
+                  <td>
+                  </td>
+                </tr>
                 )
                 }
                 </tbody>

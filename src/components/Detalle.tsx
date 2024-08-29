@@ -9,7 +9,7 @@ const Detalle = ({nombre, precio_venta}) => {
     <td><a className="product-title" href="single-product.html">{nombre}<span className="mt-1">$ {precio_venta}</span></a></td>
     <td>
       <div className="quantity">
-        <input className="qty-text" type="number" min="1" max="99"></input>
+        <input className="qty-text" type="number" min="1" max="99" defaultValue={1}></input>
       </div>
     </td>
   </tr>

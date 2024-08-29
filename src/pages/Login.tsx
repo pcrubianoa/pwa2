@@ -96,7 +96,9 @@ const Login = () => {
     <div className="row justify-content-center">
       <div className="col-10 col-lg-8"><img className="big-logo" src="https://logis.com.co/login/images/logo-text.png" width="60%" alt=""></img>
         <div className="register-form mt-5">
-          <form onSubmit={handleLogin}>
+          <h5>Bares y restaurantes</h5>
+          <span>Ingresa a tu cuenta</span>
+          <form onSubmit={handleLogin} className="mt-5">
             <div className="form-group text-start mb-4"><span>Usuario</span>
               <label htmlFor="username"><i className="ti ti-user"></i></label>
               <input

@@ -67,7 +67,7 @@ export const crud = {
   },
 
   // Eliminar un registro por su id en una tabla
-  delete: async (tableName, id) => {
+  deleteById: async (tableName, id) => {
     try {
       await db[tableName].delete(id);
       console.log(`Registro con id ${id} eliminado de la tabla ${tableName}`);

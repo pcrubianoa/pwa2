@@ -9,6 +9,7 @@ function MesaDetalle() {
   const { id } = useParams();
   const [mesa, setMesa] = useState(null);
   const [pedido, setPedido] = useState([]);
+  const [detallesCargados, setDetallesCargados] = useState(false);
 
   useEffect(() => {
     const getMesa = async (id) => {
@@ -17,19 +18,17 @@ function MesaDetalle() {
     };
 
     getMesa(id).then((mesa) => {
-      console.log('mesa: ', mesa);
       setMesa(mesa);
     });
 
     const getDetalles = async (id) => {
-      console.log("getDetalles->id", id);
       const detalles = await crud.getAllByField('documentos_detalle', 'id_mesa', id);
       return detalles;
     };
 
     getDetalles(id).then((detalles) => {
-      console.log('detalle: --->', detalles);
       setPedido(detalles);
+      setDetallesCargados(true);
     });
   }, [id]);
 
@@ -46,6 +45,13 @@ function MesaDetalle() {
     };
     await crud.add('documentos_detalle', nuevoProducto);
     setPedido([...pedido, nuevoProducto]);
+  };
+
+  const cartWrapperStyle = {
+    height: '50vh',
+    overflowY: 'scroll',
+    scrollbarWidth: 'none', /* Firefox */
+    msOverflowStyle: 'none'  /* Internet Explorer y Edge */
   };
 
   return (
@@ -67,36 +73,45 @@ function MesaDetalle() {
       <div className="page-content-wrapper">
         <div className="featured-products-wrapper py-3">
           <div className="container">
-            <div className="section-heading d-flex align-items-center justify-content-between dir-rtl">
+            <div className="section-heading d-flex align-items-center justify-content-end dir-rtl">
               {mesa ? (
                 <div>
-                  <p>Total: $ {new Intl.NumberFormat("COP").format(mesa.total)}</p>
+                  <h6>Total: $ {new Intl.NumberFormat("COP").format(mesa.total)}</h6>
                 </div>
               ) : (
                 <p>Cargando...</p>
               )}
             </div>
 
-            <div className="cart-wrapper-area py-3">
+            <div className="cart-wrapper-area py-3" style={cartWrapperStyle}>
               <div className="cart-table card mb-3">
                 <div className="table-responsive card-body">
                   <table className="table mb-0">
                     <tbody>
-                      {pedido.length > 0 ? (
-                        pedido.map(detalle => (
-                          <Detalle
-                            key={detalle.id}
-                            id={detalle.id}
-                            nombre={detalle.nombre}
-                            precio_venta={detalle.precio_venta}
-                            borrarProducto={borrarProducto}
-                          />
-                        ))
+                      {detallesCargados ? (
+                        pedido.length > 0 ? (
+                          pedido.map(detalle => (
+                            <Detalle
+                              key={detalle.id}
+                              id={detalle.id}
+                              nombre={detalle.nombre}
+                              precio_venta={detalle.precio_venta}
+                              borrarProducto={borrarProducto}
+                            />
+                          ))
+                        ) : (
+                          <tr>
+                            <th scope="row"></th>
+                            <td></td>
+                            <td><a className="product-title" href="single-product.html">Agrega productos a la mesa.</a></td>
+                            <td></td>
+                          </tr>
+                        )
                       ) : (
                         <tr>
                           <th scope="row"></th>
                           <td></td>
-                          <td><a className="product-title" href="single-product.html">Agrega productos a la mesa.</a></td>
+                          <td><a className="product-title" href="single-product.html">Cargando productos...</a></td>
                           <td></td>
                         </tr>
                       )}

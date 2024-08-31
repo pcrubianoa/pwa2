@@ -13,7 +13,6 @@ const ListaProducto = ({ agregarProducto }) => {
   useEffect(() => {
     const getFamilias = async () => {
       const familias = await crud.getAll('familias');
-      console.log('Familias:', familias);
       setFamilias(familias);
       if (familias.length > 0) {
         setFamiliaSeleccionada(familias[0]);
@@ -22,7 +21,6 @@ const ListaProducto = ({ agregarProducto }) => {
 
     const getProductos = async () => {
       const productos = await crud.getAll('productos');
-      console.log('Productos:', productos);
       setProductos(productos);
     };
 
@@ -37,7 +35,6 @@ const ListaProducto = ({ agregarProducto }) => {
   useEffect(() => {
     if (familiaSeleccionada) {
       const productosFiltrados = productos.filter(producto => producto.id_familia === familiaSeleccionada.id);
-      console.log('Productos Filtrados:', productosFiltrados);
       setProductosFiltrados(productosFiltrados);
     }
   }, [familiaSeleccionada, productos]);
@@ -47,7 +44,6 @@ const ListaProducto = ({ agregarProducto }) => {
   };
 
   const handleProductoClick = (producto) => {
-    console.log('Producto seleccionado:', producto);
     agregarProducto(producto);
   };
 

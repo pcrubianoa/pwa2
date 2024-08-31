@@ -32,7 +32,7 @@ const Mesas = () => {
     };
 
     fetchMesas().then(() => {
-      console.log('mesas: ', mesas);
+      //console.log('mesas: ', mesas);
     });
   }, []);
   return <>

@@ -66,6 +66,16 @@ export const crud = {
     }
   },
 
+  // Actualizar un registro en una tabla
+  updateById: async (tableName, id, changes) => {
+    try {
+      await db[tableName].update(id, changes);
+      console.log(`Registro con id ${id} actualizado en la tabla ${tableName}`);
+    } catch (error) {
+      console.error(`Error al actualizar un registro en la tabla ${tableName}:`, error);
+    }
+  },
+
   // Eliminar un registro por su id en una tabla
   deleteById: async (tableName, id) => {
     try {

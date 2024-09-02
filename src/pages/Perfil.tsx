@@ -9,12 +9,14 @@ const Perfil = () => {
   return <>
     <div className="header-area" id="headerArea">
       <div className="container h-100 d-flex align-items-center justify-content-between rtl-flex-d-row-r">
-        <div className="back-button me-2"><a href="checkout.html"><i className="ti ti-arrow-left"></i></a></div>
+        <div className="suha-navbar-toggler ms-2" data-bs-toggle="offcanvas" data-bs-target="#suhaOffcanvas" aria-controls="suhaOffcanvas">
+          <div><span></span><span></span><span></span></div>
+        </div>
         <div className="page-heading">
           <h6 className="mb-0">Sincronización</h6>
         </div>
-        <div className="suha-navbar-toggler ms-2" data-bs-toggle="offcanvas" data-bs-target="#suhaOffcanvas" aria-controls="suhaOffcanvas">
-          <div><span></span><span></span><span></span></div>
+        <div className="back-button me-2">
+
         </div>
       </div>
     </div>
